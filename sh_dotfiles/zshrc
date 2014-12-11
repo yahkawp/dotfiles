@@ -8,11 +8,11 @@ export EDITOR=/usr/local/Cellar/macvim/7.4-73/bin/mvim
 # OPAM configuration
 . /homes/ben/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
-export PATH=$HOME/opt/bin:$HOME/bins/dotfiles:$HOME/bins/utils:$HOME/bins/software:$HOME/local/bin:$PATH
+export PATH=$HOME/opt/bin:$HOME/bins/dotfiles:$HOME/bins/utils:$HOME/bins/software:$HOME/local/bin:$HOME/.bin:$PATH
 
 [ -f "$HOME/tools/dotfiles/functions.sh" ] && . $HOME/tools/dotfiles/functions.sh
 
-for a in dotfiles utils bot ; do
+for a in aliases utils bot ; do
     [ -f "$HOME/bins/$a/aliases.sh" ] && . $HOME/bins/$a/aliases.sh
 done
 

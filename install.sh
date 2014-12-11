@@ -5,6 +5,7 @@ cwd=$(pwd)
 trash=$HOME/trash
 aux=$HOME/aux
 bins=$HOME/bins
+configs=$HOME/.config
 
 [ -d "$trash" ] || mkdir $trash
 
@@ -18,6 +19,15 @@ ln -s $(pwd) $aux/dotfiles
 [ -d "$bins" ] || mkdir $bins
 rm -f $bins/dotfiles
 ln -s $(pwd)/bin $bins/dotfiles
+
+[ -d "$configs" ] && {
+    for c in configs/*; do
+        [ -e "$c" ] || continue
+        rm -f  $configs/$c
+        ln -s $(pwd)/configs/* $HOME/.config
+    done
+}
+
 
 for f in *; do
 	[ -d "$f" ] || continue
@@ -47,9 +57,9 @@ echo "ff "  $ff
 	*)
 		t="$trash"/$(date +"%Y%m%d%M%S")
 		[ -d "$t" ] || mkdir -p  $t
-		[ -e "$HOME/.$f" ] && { mv $HOME/.$f $t/ ; }
-		rm -rf $HOME/.$f 
-        	ln -s 	$cwd/$f $HOME/.$f
+#i		[ -e "$HOME/.$f" ] && { mv $HOME/.$f $t/ ; }
+#		rm -rf $HOME/.$f 
+ #       	ln -s 	$cwd/$f $HOME/.$f
 	;;
 	esac
 done
